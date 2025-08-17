@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+
+const iconLink: {
+  href: string;
+  icon: string;
+}[] = [
+  {  href: "https://github.com/Dulkh91", icon: "github" },
+  {
+    href: "https://www.linkedin.com/in/ros-dul-1a3506376/",
+    icon: "linkedin",
+  },
+  {href: 'https://discord.com/channels/830184174198718474', icon:"discord"}
+];
+---
+
+<div>
+  <ul class="flex space-x-7 ">
+    {
+      iconLink.map(({href, icon }) => (
+        <li class=" cursor-pointer h-14 w-14 bg-slate-600/20 hover:bg-slate-600/30 rounded-full flex justify-center items-center " >
+          <a href={href} target="_blank" >
+            <Icon name={icon} width="40" height="40" />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<!-- <i class="fa-brands fa-github"></i> -->

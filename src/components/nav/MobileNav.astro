@@ -1,0 +1,34 @@
+---
+const {menus} = Astro.props
+---
+<mobile-menu-nav>
+    <div class=" menu-mobile min-h-screen min-w-screen bg-gray-800">
+        <h1>Hell</h1>
+        {menus}
+    </div>
+</mobile-menu-nav>
+
+<script>
+import { isOpenMenu } from "../../store";
+
+isOpenMenu.subscribe(isOpen =>{
+    if(isOpen){
+        document.querySelector('.menu-mobile')
+    }else{
+        document.querySelector('.menu-mobile')
+    }
+
+
+})
+
+</script>
+
+
+<style>
+    .menu-mobile{
+        z-index: 1;
+    }
+   
+
+
+</style>

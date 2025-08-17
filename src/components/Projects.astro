@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section
+  class="container flex items-center justify-center mx-auto min-h-screen dark:text-white"
+>
+  <div class="w-full dark:bg-white/5 py-5 rounded shadow-2xl">
+    <div class="flex">
+      <h1>Hello</h1>
+      <Image
+        src={"https://github.com/Dulkh91/react_blogView/blob/main/src/assets/viewList.png?raw=true"}
+        alt="titi"
+        width={700}
+        height={700 / 0.15}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  section.container {
+    @apply backdrop-blur-[2px];
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+  }
+</style>

@@ -1,0 +1,66 @@
+<hamberger-bar>
+  <button
+    type="button"
+    class="hamberger block focus:outline-none dark:text-white"
+  >
+    <span class="hamberger-top"></span>
+    <span class="hamberger-middle"></span>
+    <span class="hamberger-buttom"></span>
+  </button>
+</hamberger-bar>
+
+<script>
+  import { isOpenMenu } from "../../store";
+  document.addEventListener("astro:page-load", () => {
+    const menu = document.querySelector(".hamberger");
+    menu?.addEventListener("click", () => {
+      // toggle value នៅក្នុង store
+      isOpenMenu.set(!isOpenMenu.get());
+
+      // toggle class
+      menu.classList.toggle("open");
+    });
+  });
+</script>
+
+<style>
+  .hamberger {
+    width: 24px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+  }
+  .hamberger-top,
+  .hamberger-middle,
+  .hamberger-buttom {
+    width: 24px;
+    height: 2px;
+    top: 0;
+    right: 0;
+    background-color: white;
+    position: absolute;
+    transition: all 0.5s;
+    transform: rotate(0);
+  }
+  .hamberger-middle {
+    transform: translateY(7px);
+  }
+  .hamberger-buttom {
+    transform: translateY(14px);
+  }
+
+  /* With Open hamberger */
+  .open {
+    transform: rotate(90deg);
+  }
+  .open .hamberger-top {
+    transform: rotate(45deg) translateX(6px) translateY(6px);
+  }
+  .open .hamberger-middle {
+    display: none;
+  }
+  .open .hamberger-buttom {
+    transform: rotate(-45deg) translateX(-6px) translateY(6px);
+  }
+</style>
