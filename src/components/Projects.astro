@@ -6,14 +6,18 @@ import { Image } from "astro:assets";
   class="container flex items-center justify-center mx-auto min-h-screen dark:text-white"
 >
   <div class="w-full dark:bg-white/5 py-5 rounded shadow-2xl">
-    <div class="flex">
-      <h1>Hello</h1>
-      <Image
+    <div class="flex md:flex-col-2 flex-row">
+      <div>
+        <h1>Hello</h1>
+      </div>
+      <div>
+        <Image
         src={"https://github.com/Dulkh91/react_blogView/blob/main/src/assets/viewList.png?raw=true"}
         alt="titi"
-        width={700}
-        height={700 / 0.15}
+        width={500}
+        height={500 / 0.15}
       />
+      </div>
     </div>
   </div>
 </section>

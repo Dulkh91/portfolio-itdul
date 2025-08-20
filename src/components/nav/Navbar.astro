@@ -5,8 +5,6 @@ import DarkMode from "./DarkMode.astro";
 import Hamberger from "./Hamberger.astro";
 import { Icon } from "astro-icon/components";
 
-import { isOpenMenu } from "../../store";
-
 const textLink: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects/" },
@@ -24,10 +22,9 @@ const textLink: { label: string; href: string }[] = [
 
   <!-- Mobile navbar -->
    <div>
-    <div class=" absolute top-2 right-5 md:right-20 flex justify-center items-center gap-3">
-      <div class="w-10 h-10 flex justify-center items-center hover:bg-violet-500/60 ">
+    <div class=" absolute top-2 right-5 md:right-20 flex justify-center items-center">
+      <div class=" relative w-10 h-10 flex justify-center items-center hover:bg-violet-500/60 ">
           <DarkMode/>
-          
       </div>
       <div class="md:hidden w-10 h-10 flex justify-center items-center">
         <Hamberger/>
