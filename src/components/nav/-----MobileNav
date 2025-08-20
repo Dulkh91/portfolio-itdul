@@ -1,0 +1,24 @@
+---
+import DarkMode from "./DarkMode.astro"
+import Hamberger from "./Hamberger.astro"
+---
+
+<mobile-nav>
+  <div class=" block md:hidden text-white border w-full mx-2">
+    <div class="flex items-center justify-between">
+      <div>
+        <h1>Home</h1>
+      </div>
+      <!-- <div class="flex items-center space-x-5">
+        <div
+          class="w-10 h-10 flex justify-center items-center hover:bg-violet-500/60"
+        >
+          <DarkMode />
+        </div>
+        <div>
+          <Hamberger />
+        </div>
+      </div> -->
+    </div>
+  </div>
+</mobile-nav>

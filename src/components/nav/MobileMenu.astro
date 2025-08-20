@@ -1,0 +1,66 @@
+---
+interface TextLink{
+    label:string;
+    href: string;
+}
+interface Props{
+    textLink: TextLink[];
+}
+
+const { textLink } = Astro.props as Props
+---
+
+<mobile-menu>
+  <div class=" menu-mobile container fixed min-h-screen min-w-screen w-full mt-14 text-gray-400 dark:text-white dark:bg-slate-800 ">
+    <ul class=" text-center mt-5">
+       {textLink.map(({label,href})=>(
+            <li class="m-menu-list border-b dark:border-b-gray-500  p-5">
+                <a href={href} class="text-xl">
+                    {label}
+                </a>
+            </li>
+
+        ))} 
+    </ul>
+  </div>
+</mobile-menu>
+
+<script>
+import { isOpenMenu } from "../../store";
+  class NavMobile extends HTMLElement {
+    unsubscribe?: ()=>void
+
+    connectedCallback() {
+      
+      // listen menu click
+      this.querySelectorAll('.m-menu-list').forEach(listMenu=>{
+          listMenu.addEventListener('click',()=>{
+            isOpenMenu.set(!isOpenMenu.get())
+          })
+      })
+
+      // subscribe to nanostore
+      this.unsubscribe = isOpenMenu.subscribe((isOpen) => {
+        if (isOpen) {
+          document.querySelector(".menu-mobile")?.classList.remove('hidden')
+        } else {
+          document.querySelector(".menu-mobile")?.classList.add('hidden')
+        }
+      });
+    }
+
+    disconnectedCallback(){
+      // Clear
+      if(this.unsubscribe){
+        this.unsubscribe()
+      }
+    }
+  }
+  customElements.define("mobile-menu", NavMobile);
+</script>
+
+<style>
+  .menu-mobile {
+    z-index: 1;
+  }
+</style>

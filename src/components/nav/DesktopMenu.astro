@@ -1,0 +1,31 @@
+---
+interface TextLink {
+  label: string;
+  href: string;
+}
+interface Props {
+  textLink: TextLink[];
+}
+
+const currentPath = Astro.url.pathname;
+const isCurrent = currentPath ? currentPath : null;
+const { textLink } = Astro.props as Props;
+---
+
+<desktop-menu>
+  <div class="hidden md:block w-full">
+    <div>
+      <ul class="md:flex justify-center space-x-3 text-2xl dark:text-white">
+        {
+          textLink.map(({ label, href }) => (
+            <li
+              class={`cursor-pointer px-1.5  ${isCurrent === href ? "active-btn-nav" : ""}`}
+            >
+              <a href={href}>{label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</desktop-menu>

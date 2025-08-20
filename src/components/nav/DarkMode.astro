@@ -2,51 +2,51 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<button 
-  type="button" 
-  class="theme-toggle cursor-pointer text-gray-500 dark:text-white"
->
-  <Icon name="moon" width={20} height={20} class="moonIcon" />
-  <Icon name="sun" width={20} height={20} class="sunIcon hidden" />
-</button>
-
+<tongle-icone>
+  <button
+    type="button"
+    class="theme-toggle cursor-pointer text-gray-500 dark:text-white"
+  >
+    <Icon name="moon" width={20} height={20} class="moonIcon" />
+    <Icon name="sun" width={20} height={20} class="sunIcon hidden" />
+  </button>
+</tongle-icone>
 
 <script is:inline>
-document.addEventListener('astro:page-load',()=>{
+  document.addEventListener("astro:page-load", () => {
+    const toggleBtn = document.querySelector(".theme-toggle");
+    const moon = document.querySelector(".moonIcon");
+    const sun = document.querySelector(".sunIcon");
 
-  const toggleBtn = document.querySelector(".theme-toggle");
-  const moon = document.querySelector(".moonIcon");
-  const sun = document.querySelector(".sunIcon");
-
-  function updateIcon(isDark) {
-    if (isDark) {
-      sun.classList.remove("hidden");
-      moon.classList.add("hidden");
-    } else {
-      moon.classList.remove("hidden");
-      sun.classList.add("hidden");
+    function updateIcon(isDark) {
+      if (isDark) {
+        sun.classList.remove("hidden");
+        moon.classList.add("hidden");
+      } else {
+        moon.classList.remove("hidden");
+        sun.classList.add("hidden");
+      }
     }
-  }
 
+    function initTheme() {
+      const saved = localStorage.getItem("theme");
+      const systemDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const isDark = saved === "dark" || (!saved && systemDark);
+      document.documentElement.dataset.theme = isDark ? "dark" : "light";
+      updateIcon(isDark);
+    }
 
-  function initTheme() {
-    const saved = localStorage.getItem("theme");
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = saved === "dark" || (!saved && systemDark);
-    document.documentElement.dataset.theme = isDark ? "dark" : "light";
-    updateIcon(isDark);
-  }
+    initTheme();
 
-  initTheme();
-  
-  toggleBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const isDark = document.documentElement.dataset.theme === "dark";
-        const newTheme = isDark ? "light" : "dark";
-        document.documentElement.dataset.theme = newTheme;
-        localStorage.setItem("theme", newTheme);
-        updateIcon(newTheme === "dark");
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isDark = document.documentElement.dataset.theme === "dark";
+      const newTheme = isDark ? "light" : "dark";
+      document.documentElement.dataset.theme = newTheme;
+      localStorage.setItem("theme", newTheme);
+      updateIcon(newTheme === "dark");
     });
-  })
-  
+  });
 </script>

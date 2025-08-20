@@ -1,64 +1,81 @@
 ---
+import DesktopMenu from "./DesktopMenu.astro";
+import MobileMenu from "./MobileMenu.astro";
 import DarkMode from "./DarkMode.astro";
 import Hamberger from "./Hamberger.astro";
-import MobileNav from "./MobileNav.astro";
+import { Icon } from "astro-icon/components";
+
+import { isOpenMenu } from "../../store";
 
 const textLink: { label: string; href: string }[] = [
-  { label: 'Home' , href: "/" },
+  { label: "Home", href: "/" },
   { label: "Projects", href: "/projects/" },
   { label: "About", href: "/about/" },
-  
 ];
-
-const currentPath = Astro.url.pathname
-const isCurrent = currentPath? currentPath: null
-
 ---
 
-<div class="nav-contain fixed w-full bg-gray-200/50 dark:bg-slate-800/50 p-2 h-14 shadow">
-  <div class="container flex justify-center items-center mx-auto dark:text-white text-gray-500">
-    <!-- Munu narbar -->
-    <ul class=" hidden md:flex justify-center space-x-3 text-2xl dark:text-white">
-      {
-        textLink.map(({ label, href }) => (
-          <li class={`cursor-pointer px-1.5  ${isCurrent=== href? 'active-btn-nav':'' }`}>
-            <a 
-             href={href}>
-                {label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+<div
+  class="nav-contain fixed flex items-center w-full bg-gray-200/50 dark:bg-slate-800/50 p-2 h-14 shadow"
+>
+  <!-- Destop Menu -->
+  <div class="hidden md:block w-full">
+    <DesktopMenu textLink={textLink} />
+  </div>
 
-      <div class=" absolute top-2 right-5 md:right-20 flex justify-center items-center gap-3">
-        <div class="w-10 h-10 flex justify-center items-center hover:bg-violet-500/60 ">
-            <DarkMode/>
-            
-        </div>
-        <div class="md:hidden w-10 h-10 flex justify-center items-center">
-          <Hamberger/>
-        </div>
+  <!-- Mobile navbar -->
+   <div>
+    <div class=" absolute top-2 right-5 md:right-20 flex justify-center items-center gap-3">
+      <div class="w-10 h-10 flex justify-center items-center hover:bg-violet-500/60 ">
+          <DarkMode/>
+          
+      </div>
+      <div class="md:hidden w-10 h-10 flex justify-center items-center">
+        <Hamberger/>
+      </div>
     </div>
 
+    <!-- Home mobile -->
+    <div class="md:hidden text-white absolute top-2 left-6 md:right-20 flex justify-center items-center gap-3">
+        <div class="home-icon w-10 h-10 flex justify-center items-center ">
+          <a href="/">
+            <Icon name={`home`} width={25} height={25} />
+          </a>
+      </div>
+    </div>
   </div>
+      
 </div>
 <!-- Mobile menu -->
-    <div class=" md:hidden absolute mobile-nav">
-        <MobileNav props={textLink}/>   
-    </div>
+<div class="md:hidden mobile-nav">
+  <MobileMenu textLink={textLink} />
+</div>
 
+<script>
+import { isOpenMenu } from "../../store";
+  document.addEventListener('astro:page-load',()=>{
+    const btnHome =   document.querySelector('.home-icon')
+
+    const handler = ()=> isOpenMenu.set(false)
+    btnHome?.addEventListener('click',handler)
+
+    // Remove event click
+    return () => btnHome?.removeEventListener('click', handler)
+
+  })
+</script>
 
 
 
 <style>
-    @import '../../styles/global.css';
-    .active-btn-nav{@apply border-b-2 border-b-gray-400 px-1.5 duration-300 text-gray-300 }
-    
-    .nav-contain{
-      z-index: 20;
-    }
-    .mobile-nav{
-      z-index: 1;
-    }
+  @import "../../styles/global.css";
+  .active-btn-nav {
+    @apply border-b-2 border-b-gray-400 px-1.5 duration-300 text-gray-300;
+  }
+
+  .nav-contain {
+    z-index: 20;
+  }
+  .mobile-nav {
+    z-index: 20;
+  }
 </style>
