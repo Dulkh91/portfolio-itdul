@@ -1,0 +1,72 @@
+---
+import Tag from "./card/Tag.astro";
+import ImageView from "./card/ImageView.astro";
+import { Icon } from "astro-icon/components";
+
+interface CardProps {
+  title: string;
+  image: string;
+  body: string;
+  src: string;
+  repo: string;
+  tag: Array<TagList>;
+}
+
+interface TagList{
+  label: string;
+  name: string,
+}
+
+const { datas } = Astro.props;
+
+
+---
+
+{datas.map((card: CardProps) =>(
+  <section class="container mx-auto max-w-4xl fade-in-element">
+  <div class="mx-2 rounded shadow-xl mb-5 dark:text-white dark:border dark:bg-gray-800 dark:border-gray-700" data-aos="fade-up" >
+    <div class=" flex flex-col md:flex-row justify-between mx-auto p-3 gap-2">
+          <div class=" relative md:order-1 order-2 p-3 md:w-1/2 w-full">
+            <h1 class="text-2xl text-center md:text-left text-blue-400" data-aos="zoom-in">
+              <a href={card.src} target="_blank">{card.title}</a>
+            </h1>
+            <!-- Tag tool -->
+              <Tag tagList={card.tag} />
+            <!-- Desciption -->
+            <p class=" mt-3 flex-wrap dark:text-gray-400" data-aos="zoom-in">
+              {card.body}
+            </p>
+            
+            {/* Git link */}
+            <button class=" absolute bottom-0 bg-stone-600 px-2 py-1 rounded w-24 right-2 md:left-2">
+              <a href={card.repo} class=" flex items-center gap-1" target="_blank">
+              <Icon name="github"/>
+              <span class=" text-gray-200 text-xs">github link</span>
+            </a>
+            </button>
+
+          </div>
+           <!-- Image view -->
+            <div  class="shrink-1 w-full md:w-auto p-2 md:p-5 order-1" data-aos="fade-up" data-aos-delay="400">
+              <ImageView img={card.image} alt={card.title} src={card.src}/>
+            </div>
+    </div>
+  </div>
+</section>
+  ))
+}
+
+ <script>
+    import AOS from 'aos';
+    document.addEventListener('astro:page-load', ()=>{
+      AOS.init({ 
+          once:false,
+          offset: 100,
+          duration: 1000,
+          easing: 'ease-out-cubic',
+          mirror: true,
+          anchorPlacement: 'top-bottom'
+        });
+    })
+  
+</script>

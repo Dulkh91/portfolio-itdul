@@ -1,0 +1,26 @@
+---
+import { Icon } from "astro-icon/components";
+interface TagList{
+  label: string;
+  name: string;
+}
+interface Props{
+  tagList: TagList[]
+}
+
+const {tagList} = Astro.props as Props
+
+---
+
+<tag-icon>
+    <div class="flex gap-2 mt-3" data-aos="zoom-in">
+  {tagList.map(({label,name})=>(
+    <button class="flex items-center space-x-1 px-2 rounded bg-white/20">
+      <Icon name={name} width={15} height={15} />
+      <span class="text-sm">{label}</span>
+    </button>
+  ))}
+  </div>
+
+  
+</tag-icon>

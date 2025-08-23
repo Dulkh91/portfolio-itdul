@@ -3,6 +3,8 @@ import '../styles/global.css'
 import Navbar from '../components/nav/Navbar.astro'
 import { ClientRouter } from 'astro:transitions'
 
+import 'aos/dist/aos.css';
+
 ---
 <!doctype html>
 <html lang="en">
@@ -26,6 +28,23 @@ import { ClientRouter } from 'astro:transitions'
 		</div>
 	</body>
 </html>
+
+
+
+ <script>
+    import AOS from 'aos';
+    document.addEventListener('DOMContentLoaded',()=>{
+        AOS.init({ 
+          once:false,
+          offset: 100,
+          duration: 1000,
+          easing: 'ease-out-cubic',
+          mirror: true,
+          anchorPlacement: 'top-bottom'
+        });
+    })
+  
+</script>
 
 <style>
 	html,

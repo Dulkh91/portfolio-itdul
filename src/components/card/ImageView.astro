@@ -1,0 +1,41 @@
+---
+import { getImage } from "astro:assets";
+import Image from "astro/components/Image.astro";
+
+const { img,alt,src } = Astro.props;
+
+const optimizeImage = await getImage({
+  src: img,
+  width: 600,
+  height: 600 / 1.5,
+  quality: 100
+});
+---
+
+<a href={src} target="_blank">
+  <div class=" group" data-aos="fade-up">
+    <Image
+      src={optimizeImage.src}
+      width={optimizeImage.attributes.width}
+      height={optimizeImage.attributes.height}
+      alt={alt}
+      class=" duration-300 hover:scale-105 hover:rounded"
+    />
+  </div>
+</a>
+
+
+<script>
+  import AOS from 'aos'
+    document.addEventListener('DOMContentLoaded',()=>{
+         AOS.init({ 
+                // once:false,
+                offset: 100,
+                duration: 800,
+                easing: 'ease-out-cubic',
+                mirror: true,
+                anchorPlacement: 'top-bottom'
+              });
+    })
+
+</script>

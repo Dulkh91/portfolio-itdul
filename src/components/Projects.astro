@@ -1,12 +1,22 @@
 ---
-import { Image } from "astro:assets";
+import Card from "./Card.astro"
+import { datasProject } from "../lip/datasProject";
+
+const projecObj = datasProject()
 ---
 
-<section
+<project-content>
+  <div class=" mt-20 space-y-10" >
+    <Card datas={projecObj}/>
+  </div>
+</project-content>
+
+
+<!-- <section
   class="container flex items-center justify-center mx-auto min-h-screen dark:text-white"
 >
   <div class="w-full dark:bg-white/5 py-5 rounded shadow-2xl">
-    <div class="flex md:flex-col-2 flex-row">
+    <div class="flex flex-col md:flex-row justify-between">
       <div>
         <h1>Hello</h1>
       </div>
@@ -20,7 +30,9 @@ import { Image } from "astro:assets";
       </div>
     </div>
   </div>
-</section>
+</section> -->
+
+
 
 <style>
   section.container {
