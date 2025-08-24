@@ -1,13 +1,16 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
 import About from "./About.mdx";
+
+const title = "About"
+const description = "Hi, I’m Ros Dul, a passionate front-end web developer from Cambodia. With a strong foundation in modern web technologies.."
+
 ---
 
-<Layout>
-  <div class="container mx-auto text-gray-600 dark:text-gray-300 fade-in-element">
+<Layout title={title} description={description}>
+  <div class="container bg-white mx-auto text-gray-600 dark:text-gray-300 dark:bg-slate-800 fade-in-element">
     <div class="grid place-items-center h-screen">
-      <div class="prose-lg text-xl p-5 ">
+      <div class="prose-lg text-md p-5 ">
         <About />
       </div>
     </div>

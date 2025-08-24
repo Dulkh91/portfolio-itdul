@@ -19,7 +19,7 @@ export const datasProject = ()=>{
             src:'https://next-moviedb-search.vercel.app', repo: 'https://github.com/Dulkh91/next-moviedb-search',
             tag:[{label:'Nextjs', name:'nextjs'},{label:'Typescript', name:'typescript'},{label:'Tailwind', name:'tailwind'},{label:'antd', name:'antd'}]},
         {title:"Portfolio", image:portfolio, body:"My portfolio showcases my journey and accomplishments as a web developer, highlighting projects built during my learning and practice. It demonstrates my skills in creating responsive, user-friendly web applications using modern technologies.", 
-             src:'https://next-moviedb-search.vercel.app', repo: 'https://github.com/Dulkh91/next-moviedb-search',
+             src:'https://portfolio-itdul.vercel.app/', repo: 'https://github.com/Dulkh91/portfolio-itdul',
             tag:[{label:'Astro', name:'astro'},{label:'Typescript', name:'typescript'},{label:'Tailwind', name:'tailwind'}]}
 
     ]

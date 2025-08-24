@@ -4,6 +4,10 @@
 /* custom variant for dark mode using data-theme */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+@layer base{
+  body{ @apply bg-neutral-100}
+}
+
 
 
 /* To do with animate while open page */

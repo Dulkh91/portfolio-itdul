@@ -15,7 +15,7 @@ const { textLink } = Astro.props as Props;
 <desktop-menu>
   <div class="hidden md:block w-full">
     <div>
-      <ul class="md:flex justify-center space-x-3 text-2xl dark:text-white">
+      <ul class="md:flex justify-center space-x-3 text-2xl text-blue-500 dark:text-gray-300 ">
         {
           textLink.map(({ label, href }) => (
             <li
@@ -33,6 +33,6 @@ const { textLink } = Astro.props as Props;
 <style>
    @import "../../styles/global.css";
   .active-btn-nav {
-    @apply border-b-2 border-b-gray-400 px-1.5 duration-300 text-gray-300;
+    @apply border-b-2 border-b-blue-400 dark:border-b-gray-400 px-1.5 duration-300 text-blue-400 dark:text-gray-400;
   }
 </style>

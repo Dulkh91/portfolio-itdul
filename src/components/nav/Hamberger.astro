@@ -1,11 +1,11 @@
 <hamberger-bar>
   <button
     type="button"
-    class="hamberger block focus:outline-none dark:text-white"
+    class="hamberger block focus:outline-none "
   >
-    <span class="hamberger-top"></span>
-    <span class="hamberger-middle"></span>
-    <span class="hamberger-buttom"></span>
+    <span class="dark:bg-white bg-gray-800 hamberger-top"></span>
+    <span class="dark:bg-white  bg-gray-800 hamberger-middle"></span>
+    <span class="dark:bg-white  bg-gray-800 hamberger-buttom"></span>
   </button>
 </hamberger-bar>
 
@@ -31,18 +31,24 @@
     position: relative;
     transition: all 0.5s;
   }
-  .hamberger-top,
-  .hamberger-middle,
-  .hamberger-buttom {
+/* Light mode */
+.hamberger-top,
+.hamberger-middle,
+.hamberger-buttom {
     width: 24px;
     height: 2px;
     top: 0;
     right: 0;
-    background-color: white;
+    /* background-color: black; */
     position: absolute;
     transition: all 0.5s;
     transform: rotate(0);
   }
+  
+
+
+
+
   .hamberger-middle {
     transform: translateY(7px);
   }
