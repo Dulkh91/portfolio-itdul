@@ -7,11 +7,13 @@ import icon from 'astro-icon';
 
 import vue from '@astrojs/vue';
 
+import mdx from '@astrojs/mdx';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [icon(), vue()]
+  integrations: [icon(), vue(), mdx()]
 });
