@@ -2,8 +2,6 @@
 import Typewriter from "astro-typewriter";
 import { Image } from "astro:assets";
 import { getImage } from "astro:assets";
-import Social from "./Social.astro";
-
 
 const optimizeImage = await getImage({ 
   src: 'https://avatars.githubusercontent.com/u/143316945?v=4',
@@ -16,17 +14,17 @@ const optimizeImage = await getImage({
 ---
 
 <section class="container flex items-center justify-center bg-white dark:bg-slate-900 mx-auto max-h-screen min-h-screen dark:text-white select-none ">
-  <div class="w-full py-5 ">
-    <div class="flex flex-col items-center md:flex-row md:justify-between gap-2 space-y-10 md:space-y-0">
+  <div class="w-full flex flex-col justify-around min-h-screen pt-10 md:py-5">
+    <div class="pt-10 flex flex-col items-center md:flex-row md:justify-between gap-2  md:space-y-0">
       <!-- Text -->
-      <div class="space-y-7 md:w-1/2 lg:w-2/3 order-2 md:order-1 w-full h-72 md:h-auto p-5">
+      <div class="space-y-7 md:w-1/2 lg:w-2/3 order-2 md:order-1 w-full md:h-auto p-5">
         <h1 class=" text-4xl md:text-5xl text-center">
           Hello <span class="wave">👋</span> I'm
         </h1>
         <h1 class=" text-5xl md:text-6xl text-sky-500 text-center">
           &lt;Ros<span class="font-light text-sky-500/50">-</span>Dul/&gt;
         </h1>
-        <di class="flex justify-center">
+        <di class="flex justify-center stroke-1">
           <p class="inline-block text-center">
           <Typewriter
             messages={["Web Developer."]}
@@ -34,7 +32,7 @@ const optimizeImage = await getImage({
             deleteSpeed={100}
             waitWritten={3000}
             waitDeleted={2000}
-            class={`text-4xl md:text-5xl lg:text-6xl bg-linear-to-r from-violet-500 to-violet-300  text-transparent bg-clip-text font-bold py-24 `}
+            class={` text-4xl md:text-5xl lg:text-6xl bg-linear-to-r from-violet-500 to-violet-300  text-transparent bg-clip-text font-bold`}
           />
           <span class="blinking-cursor inline-block"></span>
         </p>
@@ -44,7 +42,7 @@ const optimizeImage = await getImage({
 
       <!-- Image profile -->
       <div
-        class="relative w-56 h-56 md:w-72 md:h-72 bg-linear-to-t  from-violet-400 to-violet-200  dark:bg-white/10 dark:bg-none rounded-full flex items-center justify-center order-1 md:order-2 fade-in-element mr-0 md:mr-16"
+        class=" w-56 h-56 md:w-72 md:h-72 bg-linear-to-t  from-violet-400 to-violet-200  dark:bg-white/10 dark:bg-none rounded-full flex items-center justify-center order-1 md:order-2 fade-in-element mr-0 md:mr-16"
       >
         <Image
           src={optimizeImage.src}
@@ -57,17 +55,7 @@ const optimizeImage = await getImage({
     </div>
   </div>
 
-    <!-- Icon -->
-    <div class=" absolute mt-5 bottom-20 md:bottom-25 md:mt-20 flex justify-center w-full">
-        <div class="">
-          <Social/>
-        </div>
-
-    </div><!-- End Icon -->
-
-
 </section>
-
 <style>
 
   /* Hi animation */

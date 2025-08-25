@@ -14,8 +14,8 @@ const { textLink } = Astro.props as Props
   <div class=" menu-mobile container fixed min-h-screen min-w-screen w-full pt-10 text-gray-600 bg-stone-100 dark:text-white dark:bg-slate-800 ">
     <ul class=" text-center mt-5">
        {textLink.map(({label,href})=>(
-            <li class="m-menu-list border-b border-b-gray-300 dark:border-b-gray-500  p-5">
-                <a href={href} class="text-xl">
+            <li class="m-menu-list border-b border-b-gray-300 dark:border-b-gray-500 ">
+                <a href={href} class="text-xl block h-full w-full p-5  ">
                     {label}
                 </a>
             </li>

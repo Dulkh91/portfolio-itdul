@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import About from "./About.mdx";
+import MySkill from './MySkill.astro'
 
 const title = "About"
 const description = "Hi, I’m Ros Dul, a passionate front-end web developer from Cambodia. With a strong foundation in modern web technologies.."
@@ -8,11 +9,22 @@ const description = "Hi, I’m Ros Dul, a passionate front-end web developer fro
 ---
 
 <Layout title={title} description={description}>
-  <div class="container bg-white mx-auto text-gray-600 dark:text-gray-300 dark:bg-slate-800 fade-in-element">
-    <div class="grid place-items-center h-screen">
-      <div class="prose-lg text-md p-5 ">
-        <About />
+  <div class="container bg-white mx-auto text-gray-600 dark:text-gray-300 dark:bg-slate-900 fade-in-element mt-10 md:mt-0">
+    <div class="grid place-items-center min-h-screen" >
+      <div class="prose-lg text-md p-5 mx-1 md:mx-10 ">
+        <About  />
       </div>
     </div>
+
+    <div class="grid place-items-center min-h-screen">
+      <div class="prose-lg text-md p-5">
+        <MySkill />
+      </div>
+    </div>
+
+
   </div>
+  
 </Layout>
+
+

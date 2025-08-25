@@ -1,0 +1,31 @@
+---
+interface Props{
+    label: string;
+    name: string
+}
+
+const {label,name} = Astro.props as Props
+
+import { Icon } from "astro-icon/components"
+
+---
+
+<tool-icon>
+    <div class=" group relative rounded-md w-32 h-26 bg-neutral-100 dark:bg-neutral-700 grid grid-row place-content-center shadow-md" data-aos="flip-left">
+        
+        <div>
+            <Icon name={name} width={70} height={70}  />
+        </div>
+        <div class=" hidden absolute group-hover:grid group-hover:rounded-md grid-rows place-content-center w-full h-full bg-neutral-500/89 text-white dark:bg-gray-800/90 border border-gray-500 ">
+            <span>{label}</span>
+        </div>
+    </div>
+</tool-icon>
+
+
+<!-- <div>
+            <Icon name={} width={70} height={70}  />
+        </div>
+        <div class=" hidden absolute group-hover:grid group-hover:rounded-md grid-rows place-content-center w-full h-full bg-neutral-500/89 text-white dark:bg-gray-800/90 border border-gray-500 ">
+            <span>{}</span>
+        </div> -->

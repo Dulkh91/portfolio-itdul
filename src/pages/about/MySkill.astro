@@ -1,0 +1,35 @@
+---
+import Tool from "../../components/Tool.astro";
+
+const iconDatas = [
+  { label: "VS", name: "vs" },
+  { label: "Xcode", name: "xcode" },
+  { label: "HTML", name: "html" },
+  { label: "CSS", name: "css" },
+  { label: "Node.js", name: "node" },
+  { label: "Tailwind css", name: "tailwind" },
+  { label: "Javascript", name: "js" },
+  { label: "Typescript", name: "typescript" },
+  { label: "Vue", name: "vue" },
+  { label: "Astro", name: "astro" },
+  { label: "React", name: "react" },
+  { label: "Next.js", name: "nextjs" },
+  { label: "Firebase", name: "firebase" },
+  { label: "Mongodb", name: "mongodb" },
+  { label: "Swift", name: "swift" },
+
+  { label: "Githup", name: "github" },
+];
+---
+
+<skill-list>
+  <div class="flex justify-center text-gray-400" data-aos="zoom-in">
+    <h3>Tech Stack</h3>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12">
+    {iconDatas.map(({ label, name }) => <Tool label={label} name={name} />)}
+  </div>
+</skill-list>
+
+
+

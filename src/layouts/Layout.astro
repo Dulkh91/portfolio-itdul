@@ -5,8 +5,11 @@ const description = Astro.props.description  || 'dul portfolio'
 import '../styles/global.css' 
 import Navbar from '../components/nav/Navbar.astro'
 import { ClientRouter } from 'astro:transitions'
+import Social from '../components/Social.astro'
 
 import 'aos/dist/aos.css';
+
+const year = new Date().getFullYear()
 
 ---
 <!doctype html>
@@ -28,6 +31,18 @@ import 'aos/dist/aos.css';
 		<main>
 			<slot />
 		</main>
+		<footer class="pb-1">
+			<div class=" flex justify-center items-center gap-5">
+				<div class=" flex justify-center  text-gray-300 space-x-2 ">
+					<span>2025 </span> 
+					{year !==2025 && <span> - {year}</span>}
+					<span>Ros Dul</span>
+				</div>
+				<div class=" dark:text-white">
+					<Social/>
+				</div>
+			</div>
+		</footer>
 		</div>
 	</body>
 </html>
