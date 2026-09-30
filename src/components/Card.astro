@@ -40,11 +40,18 @@ const { datas } = Astro.props;
             </div>
             
             {/* Git link */}
-            <div class="flex justify-end md:justify-start ">
+            <div class="flex justify-end md:justify-start gap-2 ">
               <button class="bg-stone-200 dark:bg-stone-600 px-2 py-1 rounded w-24 right-2 md:left-2">
               <a href={card.repo} class=" flex items-center gap-1" target="_blank">
               <Icon name="github"/>
               <span class=" text-gray-600 dark:text-gray-200 text-xs">github link</span>
+              </a>
+            </button>
+            {/* Vercel Link */}
+            <button class="bg-stone-200 dark:bg-stone-600 px-2 py-1 rounded w-24 right-2 md:left-2">
+              <a href={card.src} class=" flex items-center gap-1" target="_blank">
+              <Icon name="vercel"/>
+              <span class=" text-gray-600 dark:text-gray-200 text-xs">Vercel link</span>
               </a>
             </button>
             </div>

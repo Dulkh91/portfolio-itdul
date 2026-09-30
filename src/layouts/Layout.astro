@@ -1,17 +1,17 @@
 ---
-const title = Astro.props.title 
-const description = Astro.props.description  || 'dul portfolio'
+const title = Astro.props.title;
+const description = Astro.props.description || "dul portfolio";
 
-import '../styles/global.css' 
-import Navbar from '../components/nav/Navbar.astro'
-import { ClientRouter } from 'astro:transitions'
-import Social from '../components/Social.astro'
+import "../styles/global.css";
+import Navbar from "../components/nav/Navbar.astro";
+import { ClientRouter } from "astro:transitions";
+import Social from "../components/Social.astro";
 
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
 
-const year = new Date().getFullYear()
-
+const year = new Date().getFullYear();
 ---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -19,49 +19,50 @@ const year = new Date().getFullYear()
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon-32x32.png" />
 		<meta name="generator" content={Astro.generator} />
-		<ClientRouter/>
+		<ClientRouter />
 		<title>{title}</title>
 		<meta name="description" content={description} />
 	</head>
-	<body class=" dark:bg-slate-900">
+	<body class="dark:bg-slate-900">
 		<div class="relative overflow-hidden">
 			<nav>
-			<Navbar/>
-		</nav>
-		<main>
-			<slot />
-		</main>
-		<footer class="pb-1">
-			<div class=" flex justify-center items-center gap-5">
-				<div class=" flex justify-center  text-gray-300 space-x-2 ">
-					<span>2025 </span> 
-					{year !==2025 && <span> - {year}</span>}
-					<span>Ros Dul</span>
+				<Navbar />
+			</nav>
+			<main>
+				<slot />
+			</main>
+			<footer class="pb-1">
+				<div class="flex justify-center items-center gap-5">
+					<div class=" md:flex md:justify-center gap-2">
+						<div class="dark:text-white">
+							<Social />
+						</div>
+						<div
+							class="flex items-center justify-center text-gray-300 space-x-2 pb-10 pt-5  md:pb-0 md:pt-0"
+						>
+							<span>2025</span>
+							{year !== 2025&& <span>- {year}</span>}
+							<span>Ros Dul</span>
+						</div>
+					</div>
 				</div>
-				<div class=" dark:text-white">
-					<Social/>
-				</div>
-			</div>
-		</footer>
+			</footer>
 		</div>
 	</body>
 </html>
 
-
-
- <script>
-    import AOS from 'aos';
-    document.addEventListener('DOMContentLoaded',()=>{
-        AOS.init({ 
-          once:false,
-          offset: 100,
-          duration: 1000,
-          easing: 'ease-out-cubic',
-          mirror: true,
-          anchorPlacement: 'top-bottom'
-        });
-    })
-  
+<script>
+	import AOS from "aos";
+	document.addEventListener("DOMContentLoaded", () => {
+		AOS.init({
+			once: false,
+			offset: 100,
+			duration: 1000,
+			easing: "ease-out-cubic",
+			mirror: true,
+			anchorPlacement: "top-bottom",
+		});
+	});
 </script>
 
 <style>
@@ -72,4 +73,3 @@ const year = new Date().getFullYear()
 		height: 100%;
 	}
 </style>
-

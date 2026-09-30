@@ -6,6 +6,24 @@ npm create astro@latest -- --template basics
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
+### social object format:
+```js
+{
+  name: 'discord',
+  socialLink: [
+    {
+      href: 'https://discord.com/channels/830184174198718474',
+      icon: 'discord'
+    }
+  ]
+}
+{
+  name: 'github',
+  socialLink: [ { icon: 'github', href: 'https://github.com/Dulkh91' } ]
+}
+
+```
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:

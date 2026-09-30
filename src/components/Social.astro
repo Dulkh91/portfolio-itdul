@@ -1,20 +1,76 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const iconLink: {
-  href: string;
-  icon: string;
-}[] = [
-  {  href: "https://github.com/Dulkh91", icon: "github" },
-  {
-    href: "https://www.linkedin.com/in/ros-dul-1a3506376/",
-    icon: "linkedin",
-  },
-  {href: 'https://discord.com/channels/830184174198718474', icon:"discord"}
-];
+// const iconLink: {
+//   href: string;
+//   icon: string;
+// }[] = [
+//   {  href: "https://github.com/Dulkh91", icon: "github" },
+//   {
+//     href: "https://www.linkedin.com/in/ros-dul-1a3506376/",
+//     icon: "linkedin",
+//   },
+//   {href: 'https://discord.com/channels/830184174198718474', icon:"discord"}
+// ];
+
+
+interface IconLink {
+  name: string,
+  socialLink:  SocialLink[]
+}
+type SocialLink = {
+  icon: string,
+  href: string
+}
+
+
+import {sanity} from '../lip/sanity'
+
+const iconLink = await sanity.fetch(`
+    *[_type == 'socail']{
+      name,
+      socialLink[]{
+        href,
+        icon
+      }
+    }
+`)
+
+
 ---
 
+{
+
+  iconLink.map((arr: IconLink)=>{
+    console.log(arr.name)
+    arr.socialLink.map(a=>{
+      console.log(a.href)
+      console.log(a.icon)
+    })
+  })
+}
+
 <div>
+  <ul class="flex gap-5 ">
+    {
+      iconLink.map((social: IconLink) => (
+        <li class=" cursor-pointer p-3 bg-slate-600/20 hover:bg-slate-600/30 rounded-full grid place-content-center " >
+          {
+            social.socialLink.map(link=>(
+              <a href={link.href} target="_blank" >
+                <Icon name={link.icon} width="30" height="30" />
+              </a>
+            ))
+          }
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+
+
+<!-- <div>
   <ul class="flex gap-5 ">
     {
       iconLink.map(({href, icon }) => (
@@ -26,6 +82,9 @@ const iconLink: {
       ))
     }
   </ul>
-</div>
+</div> -->
+
+
+
 
 <!-- <i class="fa-brands fa-github"></i> -->
